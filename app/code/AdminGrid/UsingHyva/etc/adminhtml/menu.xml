@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="AdminGrid_UsingHyva::first_level_demo"
+            title="AdminGrid_UsingHyva"
+            module="AdminGrid_UsingHyva" sortOrder="1"
+            resource="Magento_Backend::content" />
+       
+       <add id="AdminGrid_UsingHyva::second_level_demo"
+            title="Grid Using Hyva"
+            module="AdminGrid_UsingHyva"
+            sortOrder="1"
+            action="admingrid_usinghyva/index/grid"
+            parent="AdminGrid_UsingHyva::first_level_demo"
+            resource="Magento_Backend::content" />
+        <add id="AdminGrid_UsingHyva::third_level_demo"
+            title="Calender"
+            module="AdminGrid_UsingHyva"
+            sortOrder="1"
+            action="admingrid_usinghyva/index/calender"
+            parent="AdminGrid_UsingHyva::first_level_demo"
+            resource="Magento_Backend::content" />
+    </menu>
+</config>
