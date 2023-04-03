@@ -1,7 +1,17 @@
 <?xml version="1.0"?>
-<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
+<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
     <source>
         <collection>Magento\Sales\Model\ResourceModel\Order\Grid\Collection</collection>
     </source>
+    <columns>
+        <include>
+        <!-- <column name="id"></column> -->
+        <column name="entity_id"></column>
+        <column name="status"></column>
+        <column name="store_name"></column>
+        <column name="customer_id"></column>
+        <column name="base_grand_total"></column>
+        <column name="customer_email"></column>
+        </include>
+    </columns>
 </grid>
