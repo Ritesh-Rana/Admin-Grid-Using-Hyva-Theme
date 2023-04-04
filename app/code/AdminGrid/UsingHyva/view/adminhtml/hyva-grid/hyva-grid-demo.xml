@@ -1,17 +1,61 @@
 <?xml version="1.0"?>
 <grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
     <source>
-        <collection>Magento\Sales\Model\ResourceModel\Order\Grid\Collection</collection>
-    </source>
-    <columns>
-        <include>
-        <!-- <column name="id"></column> -->
-        <column name="entity_id"></column>
-        <column name="status"></column>
-        <column name="store_name"></column>
-        <column name="customer_id"></column>
-        <column name="base_grand_total"></column>
-        <column name="customer_email"></column>
+        <collection>Magento\Sales\Model\ResourceModel\Order\Grid\Collection</collection><!-- <defaultSearchCriteriaBindings>
+            <field name="customer_id" requestParam="id"/>
+        </defaultSearchCriteriaBindings> -->
+    </source><!-- <source>
+    <query>
+        <select>
+            <from table="sales_order"/>
+            <columns>
+                <column name="status"/>
+                <column name="state"/>
+                <column name="created_at" as="latest_order"/>
+                <expression as="count">COUNT(*)</expression>
+            </columns>
+            <groupBy>
+                <column name="status"/>
+                <column name="state"/>
+            </groupBy>
+        </select>
+    </query>
+</source> -->
+    <actions idColumn="id">
+        <action id="edit" label="Edit" url="*/*/edit"/>
+        <action id="delete" label="Delete" url="*/*/delete"/>
+    </actions>
+    <massActions idColumn="id">
+        <action id="reindex" label="Reindex" url="*/massAction/reindex"/>
+        <action id="delete" label="Delete" url="*/massAction/delete" requireConfirmation="true"/>
+    </massActions>
+    <navigation>
+        <pager>
+            <defaultPageSize>5</defaultPageSize>
+            <pageSizes>2,5,10</pageSizes>
+        </pager>
+        <sorting>
+            <defaultSortByColumn>entity_id</defaultSortByColumn>
+            <defaultSortDirection>desc</defaultSortDirection>
+        </sorting>
+        <filters>
+            <filter column="customer_email"/>
+            <filter column="store_name"/>
+            <filter column="status"/>
+        </filters>
+        <buttons>
+            <button id="add" label="Add" url="*/*/add"/>
+            <button id="refresh" label="Refresh Page" onclick="window.location.reload(true)" sortOrder="-1"/>
+        </buttons>
+    </navigation>
+    <columns rowAction="edit">
+        <include><!-- <column name="id"></column> -->
+            <column name="entity_id"></column>
+            <column name="status"></column>
+            <column name="store_name"></column>
+            <column name="customer_id"></column>
+            <column name="base_grand_total"></column>
+            <column name="customer_email"></column>
         </include>
     </columns>
 </grid>
