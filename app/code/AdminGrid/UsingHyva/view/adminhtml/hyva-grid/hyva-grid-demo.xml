@@ -47,6 +47,12 @@
             <button id="add" label="Add" url="*/*/add"/>
             <button id="refresh" label="Refresh Page" onclick="window.location.reload(true)" sortOrder="-1"/>
         </buttons>
+        <exports>
+            <export type="csv" label="Export as CSV"/>
+            <export type="xml" label="Export as XML" enabled="false"/>
+            <export type="xlsx" label="Export as XLSX"/>
+            <export type="custom" label="Export as my custom format" class="MyModuleModelCustomGridExport" fileName="example.foo" sortOrder="1"/>
+        </exports>
     </navigation>
     <columns rowAction="edit">
         <include><!-- <column name="id"></column> -->
